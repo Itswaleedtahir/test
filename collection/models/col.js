@@ -13,14 +13,18 @@ const User = new Schema({
         type : String,
         required : true
     },
-    followers:[  
-        new Schema(
-            {
-                status: String,
-                _id: mongoose.Schema.Types.ObjectId
+    followers:{
+        type: new mongoose.Schema({
+           _id: {
+                type : mongoose.Schema.Types.ObjectId
+            },
+            status:{
+                type : String,
+                enum:['Approved', 'Accepted', 'Rejected'],
+                required : true
             }
-        )
-     ],
+        })
+    }
 })
 
 module.exports = mongoose.model('sub',User)
