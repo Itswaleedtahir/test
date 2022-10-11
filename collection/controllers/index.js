@@ -30,10 +30,8 @@ module.exports = {
         throw { status: 400, message: "Required field is not approved" };
         res.status(200).send(stat);
         } catch (err) {
-            {
                 console.log(err)
                 return res.status(400).send("something went wrong")
-            }
         }
     }
 }
