@@ -54,8 +54,11 @@ business: async (req, res)=>{
 },
  get:async(req,res)=>{
     try {
-        const user = await Business.find({business_email: "abc@gmail.com"})
-        res.status(200).send({ user })
+        const user = await User.find({business:{business_email: "abc@gmail.com"}})
+        console.log(user);
+        if(!user)
+        throw { status: 400, message: "Required fields are required" }
+        res.status(200).send( user )
     } catch (err) {
         console.log(err)
         return res.status(400).send("something went wrong")
